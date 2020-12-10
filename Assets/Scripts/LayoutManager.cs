@@ -30,7 +30,7 @@ public class LayoutManager : MonoBehaviour
     {
         foreach (Transform piece in puzzle1D)
         {
-            puzzle2D[(int)piece.position.x, (int)piece.position.z] = piece;
+            puzzle2D[(int)piece.localPosition.x, (int)piece.localPosition.z] = piece;
         }
         puzzle1D = null;
     }
@@ -55,7 +55,7 @@ public class LayoutManager : MonoBehaviour
 
     public void MoveAttempt(Transform piece)
     {
-        if (piece.position.x == gapPos.x || piece.position.z == gapPos.z) // gap exists in the same column/row
+        if (piece.localPosition.x == gapPos.x || piece.localPosition.z == gapPos.z) // gap exists in the same column/row
         {
             Move(piece);
             score.Inc();
@@ -71,15 +71,15 @@ public class LayoutManager : MonoBehaviour
 
     public void Move(Transform piece)
     {
-        Vector3 pieceOrigPos = piece.position;
-        Vector3 gap2PieceNorm = (piece.position - gapPos).normalized;
+        Vector3 pieceOrigPos = piece.localPosition;
+        Vector3 gap2PieceNorm = (piece.localPosition - gapPos).normalized;
         Vector3 piece2GapNorm = -gap2PieceNorm;
         // update coords and puzzle2D representation
         for (Vector3 to = gapPos; to != pieceOrigPos; to += gap2PieceNorm)
         {
             Vector3 from = to + gap2PieceNorm;
             puzzle2D[(int)to.x, (int)to.z] = puzzle2D[(int)from.x, (int)from.z];
-            puzzle2D[(int)to.x, (int)to.z].position += piece2GapNorm;
+            puzzle2D[(int)to.x, (int)to.z].localPosition += piece2GapNorm;
         }
         gapPos = pieceOrigPos;
         puzzle2D[(int)gapPos.x, (int)gapPos.z] = null;

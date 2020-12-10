@@ -29,6 +29,8 @@ public class Shuffler : MonoBehaviour
                     layoutManager.Move(layoutManager.puzzle2D[(int)layoutManager.gapPos.x, z]);
                 }
             }
+        /* Theoretically there is non-zero probability of obtaining already solved puzzle after shuffling (but 
+         * extremely small though). So make sure it doesn't happen! */
         } while (layoutManager.Solved());
     }
 }
