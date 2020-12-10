@@ -13,13 +13,13 @@ public class LayoutManager : MonoBehaviour
     public Text endScoreText;
     public ClickDetector clickDetector;
     public GameObject endUI;
-
-    private int puzzleSize = 4;
     public int xMin = 0;
     public int xMax = 3;
     public int zMin = 0;
     public int zMax = 3;
+    public BoardSounds boardSounds;
 
+    private int puzzleSize = 4;
 
     void Awake()
     {
@@ -58,6 +58,7 @@ public class LayoutManager : MonoBehaviour
         if (piece.localPosition.x == gapPos.x || piece.localPosition.z == gapPos.z) // gap exists in the same column/row
         {
             Move(piece);
+            boardSounds.PlayMovedSound();
             score.Inc();
 
             if (Solved())
