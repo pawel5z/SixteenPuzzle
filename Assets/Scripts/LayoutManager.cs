@@ -57,7 +57,7 @@ public class LayoutManager : MonoBehaviour
     {
         if (piece.localPosition.x == gapPos.x || piece.localPosition.z == gapPos.z) // gap exists in the same column/row
         {
-            Move(piece);
+            Move(piece, tweening:true);
             boardSounds.PlayMovedSound();
             score.Inc();
 
@@ -70,17 +70,21 @@ public class LayoutManager : MonoBehaviour
         }
     }
 
-    public void Move(Transform piece)
+    public void Move(Transform piece, bool tweening)
     {
         Vector3 pieceOrigPos = piece.localPosition;
-        Vector3 gap2PieceNorm = (piece.localPosition - gapPos).normalized;
-        Vector3 piece2GapNorm = -gap2PieceNorm;
-        // update coords and puzzle2D representation
+        Vector3 gap2PieceNorm = (piece.localPosition - gapPos).normalized; // normalized vector from gap to piece
+        Vector3 piece2GapNorm = -gap2PieceNorm;                            // normalized vector from piece to gap
+        // update coords and puzzle2D representation of pieces between gap and clicked piece
         for (Vector3 to = gapPos; to != pieceOrigPos; to += gap2PieceNorm)
         {
             Vector3 from = to + gap2PieceNorm;
-            puzzle2D[(int)to.x, (int)to.z] = puzzle2D[(int)from.x, (int)from.z];
-            puzzle2D[(int)to.x, (int)to.z].localPosition += piece2GapNorm;
+            if (tweening) // move piece smoothly
+                puzzle2D[(int)from.x, (int)from.z].gameObject.GetComponent<PieceScript>().MoveTween(to);
+            puzzle2D[(int)to.x, (int)to.z] = puzzle2D[(int)from.x, (int)from.z]; // update board array representation
+            puzzle2D[(int)from.x, (int)from.z] = null;                           // temporary gap
+            if (!tweening) // move piece immediately
+                puzzle2D[(int)to.x, (int)to.z].localPosition += piece2GapNorm;
         }
         gapPos = pieceOrigPos;
         puzzle2D[(int)gapPos.x, (int)gapPos.z] = null;
