@@ -1631,6 +1631,7 @@ MonoBehaviour:
   clickDetector: {fileID: 963194229}
   endUI: {fileID: 725884318}
   score: {fileID: 467618579}
+  boardAnimator: {fileID: 1769182803}
 --- !u!4 &877912832
 Transform:
   m_ObjectHideFlags: 0
@@ -2071,6 +2072,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1769182801}
   - component: {fileID: 1769182802}
+  - component: {fileID: 1769182803}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -2116,6 +2118,25 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aeaed971b6ce2614a96f9b6e177cdc69, type: 3}
   - {fileID: 8300000, guid: 1653994ba2c4f604c8d57948d6c683df, type: 3}
   - {fileID: 8300000, guid: 179490419c13a6a4a879f600922c639a, type: 3}
+--- !u!95 &1769182803
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769182800}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5bded21e6e94e0647b745699394ddf7a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1850073670
 GameObject:
   m_ObjectHideFlags: 0

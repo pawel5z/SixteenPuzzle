@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     public ClickDetector clickDetector;
     public GameObject endUI;
     public Score score;
+    public Animator boardAnimator;
 
     private void Awake()
     {
@@ -23,5 +24,6 @@ public class GameController : MonoBehaviour
         endScoreText.text = score.scoreVal.ToString();
         endUI.SetActive(true);
         SoundManager.instance.PlayWinGameSound();
+        boardAnimator.enabled = true;
     }
 }
