@@ -22,5 +22,6 @@ public class GameController : MonoBehaviour
         clickDetector.enabled = false;
         endScoreText.text = score.scoreVal.ToString();
         endUI.SetActive(true);
+        SoundManager.instance.PlayWinGameSound();
     }
 }

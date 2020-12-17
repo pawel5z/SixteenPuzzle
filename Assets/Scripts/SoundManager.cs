@@ -6,6 +6,8 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance = null;
     public AudioSource audioSource;
+    public AudioClip launch;
+    public AudioClip twinkle;
 
     private void Awake()
     {
@@ -20,5 +22,17 @@ public class SoundManager : MonoBehaviour
         audioSource.clip = audioClip;
         audioSource.pitch = Random.Range(.95f, 1.05f);
         audioSource.Play();
+    }
+
+    public void PlayWinGameSound()
+    {
+        StartCoroutine("PlayWinGameSoundCoro");
+    }
+
+    private IEnumerator PlayWinGameSoundCoro()
+    {
+        PlaySoundVariation(launch);
+        yield return new WaitForSeconds(launch.length);
+        PlaySoundVariation(twinkle);
     }
 }

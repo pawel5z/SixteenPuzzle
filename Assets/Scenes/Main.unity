@@ -2258,6 +2258,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1850073671}
+  launch: {fileID: 8300000, guid: c89f39f7338e5934098f000cb0a80bef, type: 3}
+  twinkle: {fileID: 8300000, guid: 5c83bb91f1348d941ba81c58cc63951b, type: 3}
 --- !u!82 &1850073674
 AudioSource:
   m_ObjectHideFlags: 0
