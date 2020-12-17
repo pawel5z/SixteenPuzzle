@@ -7,7 +7,8 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance = null;
     public AudioSource audioSource;
 
-    private void Awake() {
+    private void Awake()
+    {
         if (instance == null)
             instance = this;
         else

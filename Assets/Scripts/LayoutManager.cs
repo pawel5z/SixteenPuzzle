@@ -10,9 +10,6 @@ public class LayoutManager : MonoBehaviour
     public Vector3 gapPos;
     public int shiftsNumber = 1000;
     public Score score;
-    public Text endScoreText;
-    public ClickDetector clickDetector;
-    public GameObject endUI;
     public int xMin = 0;
     public int xMax = 3;
     public int zMin = 0;
@@ -62,11 +59,7 @@ public class LayoutManager : MonoBehaviour
             score.Inc();
 
             if (Solved())
-            {
-                clickDetector.enabled = false;
-                endScoreText.text = score.scoreVal.ToString();
-                endUI.SetActive(true);
-            }
+                GameController.instance.WinGame();
         }
     }
 
