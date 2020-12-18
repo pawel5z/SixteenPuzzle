@@ -1531,7 +1531,7 @@ GameObject:
   - component: {fileID: 864574294}
   - component: {fileID: 864574293}
   m_Layer: 5
-  m_Name: YourScore
+  m_Name: YourMovesCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1589,7 +1589,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Your score is
+  m_Text: Your number of moves is
 --- !u!222 &864574294
 CanvasRenderer:
   m_ObjectHideFlags: 0
