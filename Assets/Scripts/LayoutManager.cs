@@ -1,9 +1,10 @@
 ﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class LayoutManager : MonoBehaviour
 {
+    public static LayoutManager instance = null;
     public Shuffler shuffler;
     public Transform[] puzzle1D;
     public Transform[,] puzzle2D = new Transform[4,4];
@@ -20,6 +21,10 @@ public class LayoutManager : MonoBehaviour
 
     void Awake()
     {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
         Init2Dpuzzle();
     }
 
@@ -81,5 +86,38 @@ public class LayoutManager : MonoBehaviour
         }
         gapPos = pieceOrigPos;
         puzzle2D[(int)gapPos.x, (int)gapPos.z] = null;
+    }
+
+    /* Returns array of movable pieces in given piece's row/column. */
+    public List<GameObject> MovablePieces(Transform piece)
+    {
+        List<GameObject> movablePieces = new List<GameObject>();
+        if (piece.localPosition.x != gapPos.x && piece.localPosition.z != gapPos.z)
+            return movablePieces; // given piece is not movable
+
+        Vector3 gapDir = (gapPos - piece.localPosition).normalized;
+        for (Vector3 i = piece.localPosition; i != gapPos; i += gapDir)
+            if (puzzle2D[(int)i.x, (int)i.z] != null)
+                movablePieces.Add(puzzle2D[(int)i.x, (int)i.z].gameObject);
+        return movablePieces;
+
+        // if (gapPos.x == piece.localPosition.x) // move possible in column
+        // {
+
+        //     for (int i = (int)piece.position.x; i != gapPos.x; )
+        //     {
+        //         if (puzzle2D[(int)gapPos.x, (int)i] != null)
+        //             movablePieces.Add(puzzle2D[(int)gapPos.x, i].gameObject);
+        //     }
+        // }
+        // else if (gapPos.z == piece.localPosition.z) // move possible in row
+        // {
+        //     for (int i = xMin; i <= xMax; i++)
+        //     {
+        //         if (puzzle2D[(int)i, (int)gapPos.z] != null)
+        //             movablePieces.Add(puzzle2D[(int)i, (int)gapPos.z].gameObject);
+        //     }
+        // }
+        // return movablePieces;
     }
 }

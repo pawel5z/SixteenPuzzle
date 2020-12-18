@@ -8,15 +8,16 @@ public class ClickDetector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)) // LMB clicked
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            RaycastHit hitInfo;
+            if (Physics.Raycast(ray, out hitInfo))
             {
-                if (hit.transform.CompareTag("Piece"))
+                if (hitInfo.transform.CompareTag("Piece"))
                 {
-                    layoutManager.MoveAttempt(hit.transform.parent);
+                    /* Move whole piece object. Not only model relatively to parent. */
+                    layoutManager.MoveAttempt(hitInfo.transform.parent);
                 }
             }
         }
