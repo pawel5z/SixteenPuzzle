@@ -5,9 +5,10 @@ using UnityEngine;
 public class Shuffler : MonoBehaviour
 {
     public LayoutManager layoutManager;
+    public int swapCount;
 
     private void Start() {
-        Shuffle(1000);
+        Shuffle(swapCount);
     }
 
     public void Shuffle(int n)

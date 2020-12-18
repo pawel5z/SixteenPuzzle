@@ -100,24 +100,5 @@ public class LayoutManager : MonoBehaviour
             if (puzzle2D[(int)i.x, (int)i.z] != null)
                 movablePieces.Add(puzzle2D[(int)i.x, (int)i.z].gameObject);
         return movablePieces;
-
-        // if (gapPos.x == piece.localPosition.x) // move possible in column
-        // {
-
-        //     for (int i = (int)piece.position.x; i != gapPos.x; )
-        //     {
-        //         if (puzzle2D[(int)gapPos.x, (int)i] != null)
-        //             movablePieces.Add(puzzle2D[(int)gapPos.x, i].gameObject);
-        //     }
-        // }
-        // else if (gapPos.z == piece.localPosition.z) // move possible in row
-        // {
-        //     for (int i = xMin; i <= xMax; i++)
-        //     {
-        //         if (puzzle2D[(int)i, (int)gapPos.z] != null)
-        //             movablePieces.Add(puzzle2D[(int)i, (int)gapPos.z].gameObject);
-        //     }
-        // }
-        // return movablePieces;
     }
 }
