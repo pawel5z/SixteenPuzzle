@@ -16,7 +16,7 @@ public class ClickDetector : MonoBehaviour
             {
                 if (hit.transform.CompareTag("Piece"))
                 {
-                    layoutManager.MoveAttempt(hit.transform);
+                    layoutManager.MoveAttempt(hit.transform.parent);
                 }
             }
         }
