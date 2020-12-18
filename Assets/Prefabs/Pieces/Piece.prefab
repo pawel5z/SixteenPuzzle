@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46f63942bf377d1498c058ede7c7063f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 3010483419298160761}
+  animators: []
 --- !u!1 &2534020598061686595
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +325,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveTime: 0.1
-  animator: {fileID: 3010483419298160761}
 --- !u!95 &3010483419298160761
 Animator:
   serializedVersion: 3

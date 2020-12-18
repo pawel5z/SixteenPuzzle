@@ -25,5 +25,6 @@ public class GameController : MonoBehaviour
         endUI.SetActive(true);
         SoundManager.instance.PlayWinGameSound();
         boardAnimator.enabled = true;
+        boardAnimator.SetTrigger("WaveAll");
     }
 }
