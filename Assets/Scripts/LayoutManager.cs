@@ -58,6 +58,7 @@ public class LayoutManager : MonoBehaviour
                         for (int i = 0; i < inPlaceCount; i++)
                             puzzle1D[i].GetComponentInChildren<Animator>().SetTrigger("Spin");
                         completion++;
+                        boardSounds.PlayCompletedFragmentClip();
                         break;
                 }
                 if (puzzle2D[x, z] != null)

@@ -1045,7 +1045,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679429467}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06a7ab1b4bc972148a37d2f6ff4ebdad, type: 3}
   m_Name: 
@@ -2113,11 +2113,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 757602aadb226ab48995efacd0b3154c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClips:
+  movedPieceClips:
   - {fileID: 8300000, guid: 3d3113b0dd9b0a64e90541a77d14f577, type: 3}
   - {fileID: 8300000, guid: aeaed971b6ce2614a96f9b6e177cdc69, type: 3}
   - {fileID: 8300000, guid: 1653994ba2c4f604c8d57948d6c683df, type: 3}
   - {fileID: 8300000, guid: 179490419c13a6a4a879f600922c639a, type: 3}
+  completedFragmentClip: {fileID: 8300000, guid: ac7b47dda802edb488b174e67b5aa545, type: 3}
 --- !u!95 &1769182803
 Animator:
   serializedVersion: 3

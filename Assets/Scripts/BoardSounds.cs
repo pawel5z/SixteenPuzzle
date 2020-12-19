@@ -2,10 +2,16 @@
 
 public class BoardSounds : MonoBehaviour
 {
-    public AudioClip[] audioClips;
+    public AudioClip[] movedPieceClips;
+    public AudioClip completedFragmentClip;
 
     public void PlayMovedSound()
     {
-        SoundManager.instance.PlaySoundVariation(audioClips[Random.Range(0, audioClips.Length)]);
+        SoundManager.instance.PlaySoundVariation(movedPieceClips[Random.Range(0, movedPieceClips.Length)]);
+    }
+
+    public void PlayCompletedFragmentClip()
+    {
+        SoundManager.instance.PlaySoundVariation(completedFragmentClip);
     }
 }
