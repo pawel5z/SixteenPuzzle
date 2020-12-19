@@ -9,7 +9,6 @@ public class LayoutManager : MonoBehaviour
     public Transform[] puzzle1D;
     public Transform[,] puzzle2D = new Transform[4,4];
     public Vector3 gapPos;
-    public int shiftsNumber = 1000;
     public Score score;
     public int xMin = 0;
     public int xMax = 3;
@@ -34,7 +33,6 @@ public class LayoutManager : MonoBehaviour
         {
             puzzle2D[(int)piece.localPosition.x, (int)piece.localPosition.z] = piece;
         }
-        puzzle1D = null;
     }
 
     public bool Solved()
@@ -100,5 +98,17 @@ public class LayoutManager : MonoBehaviour
             if (puzzle2D[(int)i.x, (int)i.z] != null)
                 movablePieces.Add(puzzle2D[(int)i.x, (int)i.z].gameObject);
         return movablePieces;
+    }
+
+    public void SetPiecesUnclickable()
+    {
+        foreach (Transform piece in puzzle1D)
+            piece.GetComponentInChildren<Transform>().gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+    }
+
+    public void SetPiecesClickable()
+    {
+        foreach (Transform piece in puzzle1D)
+            piece.GetComponentInChildren<Transform>().gameObject.layer = LayerMask.NameToLayer("Default");
     }
 }

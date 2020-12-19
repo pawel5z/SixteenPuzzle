@@ -17,14 +17,16 @@ public class PieceScript : MonoBehaviour
     {
         Vector3 beg = transform.localPosition;
         float speed = (actualDest - transform.localPosition).sqrMagnitude / moveTime;
-        /* User musn't attempt moving piece currently being moved. Otherwise our layout will blow up! */
-        gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
-        while ((actualDest - transform.localPosition).sqrMagnitude >= Mathf.Epsilon)
+        /* User musn't attempt moving pieces while one is being moved. Otherwise our layout will blow up! */
+        // gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+        LayoutManager.instance.SetPiecesUnclickable();
+        while ((actualDest - transform.localPosition).sqrMagnitude > Mathf.Epsilon)
         {
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, actualDest, speed * Time.deltaTime);
             yield return new WaitForEndOfFrame();
         }
-        gameObject.layer = LayerMask.NameToLayer("Default");
+        LayoutManager.instance.SetPiecesClickable();
+        // gameObject.layer = LayerMask.NameToLayer("Default");
         yield return null;
     }
 }
