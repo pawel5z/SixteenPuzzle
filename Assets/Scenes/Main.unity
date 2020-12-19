@@ -1032,7 +1032,6 @@ MonoBehaviour:
   - {fileID: 1931398903}
   - {fileID: 780488392}
   gapPos: {x: 3, y: 0, z: 3}
-  shiftsNumber: 1000
   score: {fileID: 467618579}
   xMin: 0
   xMax: 3
@@ -1046,7 +1045,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679429467}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06a7ab1b4bc972148a37d2f6ff4ebdad, type: 3}
   m_Name: 

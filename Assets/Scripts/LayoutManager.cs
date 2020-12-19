@@ -17,6 +17,12 @@ public class LayoutManager : MonoBehaviour
     public BoardSounds boardSounds;
 
     private int puzzleSize = 4;
+    /* 0 - no row ever completed
+     * 1 - completed once till the 1st row
+     * 2 - completed once till the 2nd row
+     * 3 - completed once till the 3rd row
+     */
+    private int completion = 0;
 
     void Awake()
     {
@@ -35,22 +41,41 @@ public class LayoutManager : MonoBehaviour
         }
     }
 
-    public bool Solved()
+    private int piecesInPlace()
     {
+        int inPlaceCount = 0;
         for (int z = zMin; z <= zMax; z++)
         {
             for (int x = xMin; x <= xMax && (puzzleSize*z + x + 1) <= 15; x++)
             {
+                switch (inPlaceCount)
+                {
+                    case 4: // fall through
+                    case 8: // fall through
+                    case 12:
+                        if (completion >= inPlaceCount / 4)
+                            break;
+                        for (int i = 0; i < inPlaceCount; i++)
+                            puzzle1D[i].GetComponentInChildren<Animator>().SetTrigger("Spin");
+                        completion++;
+                        break;
+                }
                 if (puzzle2D[x, z] != null)
                 {
                     if (puzzle2D[x, z].GetComponentInChildren<TextMeshPro>().text != (puzzleSize*z + x + 1).ToString())
-                        return false;
+                        return inPlaceCount;
                 }
                 else
-                    return false;
+                    return inPlaceCount;
+                inPlaceCount++;
             }
         }
-        return true;
+        return inPlaceCount;
+    }
+
+    public bool Solved()
+    {
+        return piecesInPlace() == 15;
     }
 
     public void MoveAttempt(Transform piece)
