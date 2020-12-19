@@ -19,9 +19,8 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySoundVariation(AudioClip audioClip)
     {
-        audioSource.clip = audioClip;
         audioSource.pitch = Random.Range(.95f, 1.05f);
-        audioSource.Play();
+        audioSource.PlayOneShot(audioClip);
     }
 
     public void PlayWinGameSound()
