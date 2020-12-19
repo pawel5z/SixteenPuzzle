@@ -31,7 +31,7 @@ public class SoundManager : MonoBehaviour
     private IEnumerator PlayWinGameSoundCoro()
     {
         PlaySoundVariation(launch);
-        yield return new WaitForSeconds(launch.length);
+        yield return new WaitForSeconds(launch.length / 2f);
         PlaySoundVariation(twinkle);
     }
 }

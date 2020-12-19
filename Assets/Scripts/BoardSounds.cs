@@ -14,4 +14,9 @@ public class BoardSounds : MonoBehaviour
     {
         SoundManager.instance.PlaySoundVariation(completedFragmentClip);
     }
+
+    public void PlayWinGameSound()
+    {
+        SoundManager.instance.PlayWinGameSound();
+    }
 }
